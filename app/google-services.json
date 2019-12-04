@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "113239549216",
+    "firebase_url": "https://clicker-5c0f3.firebaseio.com",
+    "project_id": "clicker-5c0f3",
+    "storage_bucket": "clicker-5c0f3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:113239549216:android:0804c0382417a1a3e3e345",
+        "android_client_info": {
+          "package_name": "com.example.clicker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "113239549216-e5ptli09kkbbck40a2bm4jv5aurhc503.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHI5mnoUK9RmmXGHnE-ZLfdOXr5YR5Lsc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "113239549216-e5ptli09kkbbck40a2bm4jv5aurhc503.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
