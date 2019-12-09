@@ -17,6 +17,7 @@ public class Session {
     public String getEmail(){ return preferences.getString("emailKey", ""); }
     public int getRepCount(){ return preferences.getInt("repCountKey", 0); }
     public int getTapCount(){ return preferences.getInt("tapCountKey", 0); }
+    public int getMultiplier(){ return preferences.getInt("multiplierKey", 0); }
 
     //Setters
     public void setLogin(String login){
