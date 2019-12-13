@@ -48,7 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
         pass = findViewById(R.id.regPassword);
         confirmPass = findViewById(R.id.regConfirmPassword);
         loginLink = findViewById(R.id.loginLink);
-        errorMsg = findViewById(R.id.regErrorMsg);
+        //errorMsg = findViewById(R.id.regErrorMsg);
         registerBtn = findViewById(R.id.regBtn);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
