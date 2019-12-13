@@ -25,11 +25,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        System.out.println("WER");
         Session session = new Session(getApplicationContext());
         checkLogin(session.getLogin());
-
-        System.out.println("WER3");
 
         dbManager = new DatabaseManager(this);
         dbManager.open();
@@ -53,8 +50,8 @@ public class LoginActivity extends AppCompatActivity {
                     session.setLogin("Login");
                     session.setUsername(user.getUsername());
                     session.setEmail(user.getEmail());
-                    session.setRepCount(user.getRepCount());
-                    session.setTapCount(user.getTapCount());
+                    session.setCurrCount(user.getCurrCount());
+                    session.setTotalCount(user.getTotalCount());
 
                     Intent intent = new Intent(LoginActivity.this, TapActivity.class);
                     startActivity(intent);

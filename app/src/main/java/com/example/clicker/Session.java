@@ -15,24 +15,18 @@ public class Session {
     public String getLogin(){ return preferences.getString("loginKey", ""); }
     public String getUsername(){ return preferences.getString("usernameKey", ""); }
     public String getEmail(){ return preferences.getString("emailKey", ""); }
-    public int getRepCount(){ return preferences.getInt("repCountKey", 0); }
-    public int getTapCount(){ return preferences.getInt("tapCountKey", 0); }
+    public int getCurrCount(){ return preferences.getInt("currCountKey", 0); }
+    public int getTotalCount(){ return preferences.getInt("totalCountKey", 0); }
     public int getMultiplier(){ return preferences.getInt("multiplierKey", 0); }
 
     //Setters
     public void setLogin(String login){
         preferences.edit().putString("loginKey", login).apply();
     }
-    public void setUsername(String username){
-        preferences.edit().putString("usernameKey", username).apply();
-    }
+    public void setUsername(String username){ preferences.edit().putString("usernameKey", username).apply(); }
     public void setEmail(String email){
         preferences.edit().putString("emailKey", email).apply();
     }
-    public void setRepCount(int repCount){
-        preferences.edit().putInt("repCountKey", repCount).apply();
-    }
-    public void setTapCount(int tapCount){
-        preferences.edit().putInt("tapCountKey", tapCount).apply();
-    }
+    public void setCurrCount(int currCount){ preferences.edit().putInt("currCountKey", currCount).apply(); }
+    public void setTotalCount(int totalCount){ preferences.edit().putInt("totalCountKey", totalCount).apply(); }
 }

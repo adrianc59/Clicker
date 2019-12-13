@@ -6,8 +6,8 @@ public class User {
     private String username;
     private String email;
     private String password;
-    private int RepCount;
-    private int TapCount;
+    private int currCount;
+    private int totalCount;
 
     //Constructors
     public User(){
@@ -42,13 +42,13 @@ public class User {
     {
         return this.password;
     }
-    public int getRepCount()
+    public int getCurrCount()
     {
-        return this.RepCount;
+        return this.currCount;
     }
-    public int getTapCount()
+    public int getTotalCount()
     {
-        return this.TapCount;
+        return this.totalCount;
     }
 
     //Setters
@@ -58,6 +58,6 @@ public class User {
     public void setUsername(String username){ this.username = username; }
     public void setEmail(String email){ this.email = email; }
     public void setPassword(String password){ this.password = password; }
-    public void setRepCount(int count){ this.RepCount = count; }
-    public void setTapCount(int count){ this.TapCount = count; }
+    public void setCurrCount(int count){ this.currCount = count; }
+    public void setTotalCount(int count){ this.totalCount = count; }
 }

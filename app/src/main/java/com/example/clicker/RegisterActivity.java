@@ -31,8 +31,8 @@ public class RegisterActivity extends AppCompatActivity {
     public static final String MyPREFERENCES = "MyPrefs" ;
     public static final String SESSION_USERNAME = "usernameKey";
     public static final String SESSION_EMAIL = "emailKey";
-    public static final String SESSION_REP = "repKey";
-    public static final String SESSION_TAP = "tapKey";
+    public static final String SESSION_CURR = "currCountKey";
+    public static final String SESSION_TOTAL = "totalCountKey";
     SharedPreferences sharedpreferences;
 
     @Override
@@ -72,15 +72,15 @@ public class RegisterActivity extends AppCompatActivity {
 
                     editor.putString(SESSION_USERNAME, username.getText().toString());
                     editor.putString(SESSION_EMAIL, email.getText().toString());
-                    editor.putInt(SESSION_REP, 0);
-                    editor.putInt(SESSION_TAP, 0);
+                    editor.putInt(SESSION_CURR, 0);
+                    editor.putInt(SESSION_TOTAL, 0);
                     editor.commit();
 
                     Session session = new Session(getApplicationContext());
                     session.setUsername(username.getText().toString());
                     session.setEmail(email.getText().toString());
-                    session.setRepCount(0);
-                    session.setTapCount(0);
+                    session.setCurrCount(0);
+                    session.setTotalCount(0);
 
                     Intent intent = new Intent(RegisterActivity.this, TapActivity.class);
                     startActivity(intent);

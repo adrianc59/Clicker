@@ -11,6 +11,7 @@ public class ShopActivity extends AppCompatActivity {
 
     private DatabaseManager dbManager;
     private Session session;
+    private int currPoints;
 
     //Store Tap multiplier in db
 

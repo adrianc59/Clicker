@@ -62,13 +62,13 @@ public class DatabaseManager {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.EMAIL, user.getEmail());
         values.put(DatabaseHelper.PASSWORD, user.getPassword());
-        values.put(DatabaseHelper.REP_COUNT, user.getRepCount());
-        values.put(DatabaseHelper.TAP_COUNT, user.getTapCount());
+        values.put(DatabaseHelper.CURR_COUNT, user.getCurrCount());
+        values.put(DatabaseHelper.TOTAL_COUNT, user.getTotalCount());
         database.insert(DatabaseHelper.TABLE_USER, null, values);
     }
 
     public User findAccount(String email, String password) {
-        String query = "Select "+ DatabaseHelper.USERNAME + ", " + DatabaseHelper.EMAIL + ", " + DatabaseHelper.REP_COUNT + ", " + DatabaseHelper.TAP_COUNT +
+        String query = "Select "+ DatabaseHelper.USERNAME + ", " + DatabaseHelper.EMAIL + ", " + DatabaseHelper.CURR_COUNT + ", " + DatabaseHelper.TOTAL_COUNT +
                        " FROM " + DatabaseHelper.TABLE_USER +
                        " WHERE " + DatabaseHelper.EMAIL + " = " + "'" + email + "'" +
                        " AND " + DatabaseHelper.PASSWORD + " = '" + password + "'";
@@ -81,16 +81,16 @@ public class DatabaseManager {
 
         user.setUsername(cursor.getString(0));
         user.setEmail(cursor.getString(1));
-        user.setRepCount(cursor.getInt(2));
-        user.setTapCount(cursor.getInt(3));
+        user.setCurrCount(cursor.getInt(2));
+        user.setTotalCount(cursor.getInt(3));
 
         return user;
     }
 
     public void updateCount(Session session) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(DatabaseHelper.REP_COUNT, session.getRepCount());
-        contentValues.put(DatabaseHelper.TAP_COUNT, session.getTapCount());
+        contentValues.put(DatabaseHelper.CURR_COUNT, session.getCurrCount());
+        contentValues.put(DatabaseHelper.TOTAL_COUNT, session.getTotalCount());
         database.update(DatabaseHelper.TABLE_USER, contentValues, DatabaseHelper.EMAIL + " = ?", new String[]{session.getEmail()});
     }
 
