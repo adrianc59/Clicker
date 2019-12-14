@@ -8,6 +8,7 @@ public class User {
     private String password;
     private int currCount;
     private int totalCount;
+    private int multiplier;
 
     //Constructors
     public User(){
@@ -17,12 +18,9 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
-    }
-    public User(int id, String username, String email, String password){
-        this.id = id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
+        this.currCount = 0;
+        this.totalCount = 0;
+        this.multiplier = 1;
     }
 
     //Getters
@@ -50,6 +48,10 @@ public class User {
     {
         return this.totalCount;
     }
+    public int getMultiplier()
+    {
+        return this.multiplier;
+    }
 
     //Setters
     public void setId(int id){
@@ -60,4 +62,5 @@ public class User {
     public void setPassword(String password){ this.password = password; }
     public void setCurrCount(int count){ this.currCount = count; }
     public void setTotalCount(int count){ this.totalCount = count; }
+    public void setMultiplier(int multiplier){ this.multiplier = multiplier; }
 }

@@ -60,23 +60,30 @@ public class DatabaseManager {
 
     public void addUser(User user) {
         ContentValues values = new ContentValues();
+        values.put(DatabaseHelper.USERNAME, user.getUsername());
         values.put(DatabaseHelper.EMAIL, user.getEmail());
         values.put(DatabaseHelper.PASSWORD, user.getPassword());
         values.put(DatabaseHelper.CURR_COUNT, user.getCurrCount());
         values.put(DatabaseHelper.TOTAL_COUNT, user.getTotalCount());
+        values.put(DatabaseHelper.MULTIPLIER, user.getMultiplier());
         database.insert(DatabaseHelper.TABLE_USER, null, values);
     }
 
-    public User findAccount(String email, String password) {
+    public User findAccount(String username, String password) {
         String query = "Select "+ DatabaseHelper.USERNAME + ", " + DatabaseHelper.EMAIL + ", " + DatabaseHelper.CURR_COUNT + ", " + DatabaseHelper.TOTAL_COUNT +
                        " FROM " + DatabaseHelper.TABLE_USER +
-                       " WHERE " + DatabaseHelper.EMAIL + " = " + "'" + email + "'" +
+                       " WHERE " + DatabaseHelper.USERNAME + " = " + "'" + username + "'" +
                        " AND " + DatabaseHelper.PASSWORD + " = '" + password + "'";
 
         User user = new User();
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
+
+        if(cursor.getCount() == 0) {
+            return user;
+        }
+
         cursor.moveToFirst();
 
         user.setUsername(cursor.getString(0));
@@ -87,12 +94,38 @@ public class DatabaseManager {
         return user;
     }
 
-    public void updateCount(Session session) {
+    public void updateCount(Session session, int totalCount) {
+        int multiplier = session.getMultiplier();
+
+        session.setCurrCount(session.getCurrCount() + (1 * multiplier));
         ContentValues contentValues = new ContentValues();
         contentValues.put(DatabaseHelper.CURR_COUNT, session.getCurrCount());
-        contentValues.put(DatabaseHelper.TOTAL_COUNT, session.getTotalCount());
-        database.update(DatabaseHelper.TABLE_USER, contentValues, DatabaseHelper.EMAIL + " = ?", new String[]{session.getEmail()});
+        contentValues.put(DatabaseHelper.TOTAL_COUNT, totalCount + (1 * multiplier));
+        database.update(DatabaseHelper.TABLE_USER, contentValues, DatabaseHelper.USERNAME + " = ?", new String[]{session.getUsername()});
     }
 
+    public void updateMultiplier(Session session, int multiplier) {
+        session.setMultiplier(multiplier);
+        System.out.println("s = " + session.getMultiplier());
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DatabaseHelper.MULTIPLIER, multiplier);
+        database.update(DatabaseHelper.TABLE_USER, contentValues, DatabaseHelper.USERNAME + " = ?", new String[]{session.getUsername()});
+    }
 
+    public int getTotalCount(String username){
+        String query = "Select "+ DatabaseHelper.TOTAL_COUNT +
+                " FROM " + DatabaseHelper.TABLE_USER +
+                " WHERE " + DatabaseHelper.USERNAME + " = " + "'" + username + "'";
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        if(cursor.getCount() == 0) {
+            return 0;
+        }
+
+        cursor.moveToFirst();
+
+        return cursor.getInt(0);
+    }
 }

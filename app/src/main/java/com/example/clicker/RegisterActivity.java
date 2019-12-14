@@ -24,16 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText pass;
     private EditText confirmPass;
     private TextView loginLink;
-    private TextView errorMsg;
     private Button registerBtn;
-
-    //Session
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    public static final String SESSION_USERNAME = "usernameKey";
-    public static final String SESSION_EMAIL = "emailKey";
-    public static final String SESSION_CURR = "currCountKey";
-    public static final String SESSION_TOTAL = "totalCountKey";
-    SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
         pass = findViewById(R.id.regPassword);
         confirmPass = findViewById(R.id.regConfirmPassword);
         loginLink = findViewById(R.id.loginLink);
-        //errorMsg = findViewById(R.id.regErrorMsg);
         registerBtn = findViewById(R.id.regBtn);
-
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         username.addTextChangedListener(inputWatcher);
         email.addTextChangedListener(inputWatcher);
@@ -66,21 +54,13 @@ public class RegisterActivity extends AppCompatActivity {
                 boolean validPassword = checkPassword(pass.getText().toString(), confirmPass.getText().toString());
 
                 if(validUsername && validEmail && validPassword) {
-                    addValidUser(username.getText().toString(), email.getText().toString(),confirmPass.getText().toString());
-
-                    SharedPreferences.Editor editor = sharedpreferences.edit();
-
-                    editor.putString(SESSION_USERNAME, username.getText().toString());
-                    editor.putString(SESSION_EMAIL, email.getText().toString());
-                    editor.putInt(SESSION_CURR, 0);
-                    editor.putInt(SESSION_TOTAL, 0);
-                    editor.commit();
+                    User user = new User(username.getText().toString(), email.getText().toString(),pass.getText().toString());
+                    dbManager.addUser(user);
 
                     Session session = new Session(getApplicationContext());
                     session.setUsername(username.getText().toString());
-                    session.setEmail(email.getText().toString());
                     session.setCurrCount(0);
-                    session.setTotalCount(0);
+                    session.setMultiplier(1);
 
                     Intent intent = new Intent(RegisterActivity.this, TapActivity.class);
                     startActivity(intent);
@@ -129,8 +109,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private boolean checkEmail(String email) {
-
-        //Check if email is taken
         if(dbManager.checkEmailExist(email)) {
             Toast toast = Toast.makeText(getApplicationContext(), "Email already taken!", Toast.LENGTH_LONG);
             toast.show();
