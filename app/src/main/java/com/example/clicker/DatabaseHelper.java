@@ -16,6 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final int DATABASE_VERSION_4 = 4;
     static final int DATABASE_VERSION_5 = 5;
     static final int DATABASE_VERSION_6 = 6;
+    static final int DATABASE_VERSION_7 = 7;
 
     //Db name
     public static final String DATABASE_NAME = "RepClicker";
@@ -31,6 +32,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String CURR_COUNT = "currCount";
     public static final String TOTAL_COUNT = "totalCount";
     public static final String MULTIPLIER = "multiplier";
+    public static final String ITEM_1 = "item1";
+    public static final String ITEM_2 = "item2";
+    public static final String ITEM_3 = "item3";
+    public static final String ITEM_4 = "item4";
+    public static final String ITEM_5 = "item5";
 
     //Table create statements
     private static final String CREATE_TABLE_USERS = "CREATE TABLE " + TABLE_USER + " (" +
@@ -40,10 +46,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             PASSWORD + " TEXT," +
             String.valueOf(CURR_COUNT) + " INTEGER," +
             String.valueOf(TOTAL_COUNT) + " INTEGER," +
-            String.valueOf(MULTIPLIER) + " INTEGER)";
+            String.valueOf(MULTIPLIER) + " INTEGER," +
+            String.valueOf(ITEM_1) + " INTEGER," +
+            String.valueOf(ITEM_2) + " INTEGER," +
+            String.valueOf(ITEM_3) + " INTEGER," +
+            String.valueOf(ITEM_4) + " INTEGER," +
+            String.valueOf(ITEM_5) + " INTEGER)";
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION_6);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION_7);
     }
 
     @Override

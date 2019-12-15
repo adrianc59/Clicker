@@ -17,6 +17,7 @@ public class TapActivity extends AppCompatActivity {
     TextView somethingCountView;
     Button shopBtn;
     Button logoutBtn;
+    TextView multiplierView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class TapActivity extends AppCompatActivity {
         tapper = findViewById(R.id.tapper);
         shopBtn = findViewById(R.id.shopBtn);
         logoutBtn = findViewById(R.id.logoutBtn);
+        multiplierView = findViewById(R.id.multiplierView);
 
         dbManager = new DatabaseManager(this);
         dbManager.open();
@@ -34,6 +36,7 @@ public class TapActivity extends AppCompatActivity {
         final Session session = new Session(getApplicationContext());
         final String username = session.getUsername();
 
+        multiplierView.setText("Multiplier = X" + session.getMultiplier());
         somethingCountView.setText(session.getCurrCount() + " Reps!");
 
         tapper.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +51,7 @@ public class TapActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TapActivity.this, ShopActivity.class);
+                intent.putExtra("currCount", session.getCurrCount());
                 startActivity(intent);
             }
         });
