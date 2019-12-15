@@ -16,6 +16,7 @@ public class TapActivity extends AppCompatActivity {
     ImageView tapper;
     TextView somethingCountView;
     Button shopBtn;
+    Button leaderBtn;
     Button logoutBtn;
     TextView multiplierView;
 
@@ -27,6 +28,7 @@ public class TapActivity extends AppCompatActivity {
         somethingCountView = findViewById(R.id.tapperView);
         tapper = findViewById(R.id.tapper);
         shopBtn = findViewById(R.id.shopBtn);
+        leaderBtn = findViewById(R.id.leaderBtn);
         logoutBtn = findViewById(R.id.logoutBtn);
         multiplierView = findViewById(R.id.multiplierView);
 
@@ -44,6 +46,15 @@ public class TapActivity extends AppCompatActivity {
             public void onClick(View view) {
                 dbManager.updateCount(session, dbManager.getTotalCount(username));
                 somethingCountView.setText(session.getCurrCount() + " Reps!");
+            }
+        });
+
+        leaderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TapActivity.this, MainActivity.class);
+                intent.putExtra("currCount", session.getCurrCount());
+                startActivity(intent);
             }
         });
 
