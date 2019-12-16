@@ -6,8 +6,10 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,6 +33,8 @@ public class leaderboardAdapter extends RecyclerView.Adapter<leaderboardAdapter.
         public TextView mScoreView;
         public TextView mUsernameView;
 
+        public Button mRemoveButton;
+
 
         public leaderboardViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -38,6 +42,8 @@ public class leaderboardAdapter extends RecyclerView.Adapter<leaderboardAdapter.
             mPositionView = itemView.findViewById(R.id.positionView);
             mUsernameView = itemView.findViewById(R.id.usernameView);
             mScoreView = itemView.findViewById(R.id.scoreView);
+
+            mRemoveButton = itemView.findViewById(R.id.removeBtn);
         }
     }
 
@@ -57,7 +63,7 @@ public class leaderboardAdapter extends RecyclerView.Adapter<leaderboardAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull leaderboardViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull leaderboardViewHolder holder, final int position) {
         userScore currentScore = mUserscoresList.get(position);
         holder.mPositionView.setText(String.valueOf(position + 1));
         holder.mUsernameView.setText((currentScore.getUsername()));
@@ -74,7 +80,22 @@ public class leaderboardAdapter extends RecyclerView.Adapter<leaderboardAdapter.
             e.printStackTrace();
             System.out.println("Error = " + e);
         }*/
+
+       holder.mRemoveButton.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               // Get the clicked item label
+               userScore itemLabel = mUserscoresList.get(position);
+
+               // Remove the item on remove/button click
+               mUserscoresList.remove(position);
+               notifyItemRemoved(position);
+               notifyItemRangeChanged(position, mUserscoresList.size());
+           }
+       });
     }
+
+
 
     @Override
     public int getItemCount() {

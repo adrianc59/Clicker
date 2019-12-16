@@ -34,8 +34,8 @@
             android:layout_width="126dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="185dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="138dp"
+            android:layout_marginTop="11dp"
             android:layout_toEndOf="@+id/imageView"
             android:text="Score"
             android:textColor="@android:color/black"
@@ -44,7 +44,7 @@
 
         <TextView
             android:id="@+id/usernameView"
-            android:layout_width="160dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/scoreView"
             android:layout_marginStart="14dp"
@@ -52,6 +52,15 @@
             android:layout_toEndOf="@+id/imageView"
             android:text="Username"
             android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/removeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:width="20dp"
+            android:text="Button" />
 
 
     </RelativeLayout>
