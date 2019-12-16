@@ -8,6 +8,16 @@
     tools:context=".test12345">
 
 
+    <ImageView
+        android:id="@+id/imageViewTest"
+        android:layout_width="356dp"
+        android:layout_height="331dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="68dp"
+        android:padding="2dp" />
+
     <com.github.clans.fab.FloatingActionMenu
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

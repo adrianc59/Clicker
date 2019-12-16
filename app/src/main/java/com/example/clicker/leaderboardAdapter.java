@@ -1,5 +1,6 @@
 package com.example.clicker;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -19,6 +22,8 @@ import java.util.ArrayList;
 public class leaderboardAdapter extends RecyclerView.Adapter<leaderboardAdapter.leaderboardViewHolder> {
 
     private ArrayList<userScore> mUserscoresList;
+    Context context;
+
 
     public static class leaderboardViewHolder extends RecyclerView.ViewHolder{
         public TextView mPositionView;
@@ -57,7 +62,8 @@ public class leaderboardAdapter extends RecyclerView.Adapter<leaderboardAdapter.
         holder.mPositionView.setText(String.valueOf(position + 1));
         holder.mUsernameView.setText((currentScore.getUsername()));
         holder.mScoreView.setText(String.valueOf(currentScore.getScore()));
-        holder.mScoreView.setText(currentScore.getImageResource());
+        Picasso.with(context).load(currentScore.getImageResource()).into(holder.mImageView);
+
 
        /* URL url = null;
         try {

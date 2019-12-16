@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -18,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private RequestQueue mQueue;
     private Button leaderBackBtn;
+
     com.github.clans.fab.FloatingActionButton shopBtn;
     com.github.clans.fab.FloatingActionButton leaderBtn;
     com.github.clans.fab.FloatingActionButton gameBtn;
@@ -45,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         final String loggedUsername = intent.getStringExtra("username");
         final int totalCount = intent.getIntExtra("totalCount", 0);
+
+
 
         userScore logged = new userScore(loggedUsername,totalCount,"https://cdn4.iconfinder.com/data/icons/sports-fitness-line-color-vol-5/52/weight__dumbbell__fitness__gym__lifter__avatar__body-512.png");
 
