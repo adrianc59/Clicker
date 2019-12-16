@@ -81,10 +81,13 @@ public class MainActivity extends AppCompatActivity {
         shopBtn = findViewById(R.id.floatingActionItem2);
         gameBtn = findViewById(R.id.floatingActionItem3);
 
+        final Session session = new Session(getApplicationContext());
+
         shopBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ShopActivity.class);
+                intent.putExtra("currCount", session.getCurrCount());
                 startActivity(intent);
             }
         });
