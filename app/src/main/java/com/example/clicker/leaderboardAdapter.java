@@ -16,18 +16,18 @@ public class leaderboardAdapter extends RecyclerView.Adapter<leaderboardAdapter.
     private ArrayList<userScore> mUserscoresList;
 
     public static class leaderboardViewHolder extends RecyclerView.ViewHolder{
-        public TextView mTextView3;
+        public TextView mPositionView;
         public ImageView mImageView;
-        public TextView mTextView1;
-        public TextView mTextView2;
+        public TextView mScoreView;
+        public TextView mUsernameView;
 
 
         public leaderboardViewHolder(@NonNull View itemView) {
             super(itemView);
             mImageView = itemView.findViewById(R.id.imageView);
-            mTextView1 = itemView.findViewById(R.id.textView);
-            mTextView2 = itemView.findViewById(R.id.textView2);
-            mTextView3 = itemView.findViewById(R.id.textViewPos);
+            mPositionView = itemView.findViewById(R.id.positionView);
+            mUsernameView = itemView.findViewById(R.id.usernameView);
+            mScoreView = itemView.findViewById(R.id.scoreView);
         }
     }
 
@@ -50,10 +50,10 @@ public class leaderboardAdapter extends RecyclerView.Adapter<leaderboardAdapter.
     public void onBindViewHolder(@NonNull leaderboardViewHolder holder, int position) {
         userScore currentScore = mUserscoresList.get(position);
 
+        holder.mPositionView.setText(String.valueOf(currentScore.getPosition()));
+        holder.mUsernameView.setText((currentScore.getUsername()));
+        holder.mScoreView.setText(String.valueOf(currentScore.getScore()));
         holder.mImageView.setImageResource(currentScore.getImageResource());
-        holder.mTextView1.setText(currentScore.getText1());
-        holder.mTextView2.setText((currentScore.getText2()));
-        holder.mTextView3.setText((currentScore.getPosition()));
     }
 
     @Override

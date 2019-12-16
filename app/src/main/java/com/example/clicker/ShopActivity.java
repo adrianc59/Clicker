@@ -6,9 +6,12 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Map;
 
 import static com.example.clicker.BaseApplication.CHANNEL_1_ID;
 import static com.example.clicker.BaseApplication.CHANNEL_2_ID;
@@ -31,7 +36,7 @@ public class ShopActivity extends AppCompatActivity {
     Button item4;
     Button item5;
 
-    Button testBtn;
+    Button backBtn;
 
     TextView currCountView;
     ProgressBar progressBar1;
@@ -62,7 +67,7 @@ public class ShopActivity extends AppCompatActivity {
         item5 = findViewById(R.id.item5);
         currCountView = findViewById(R.id.currCountShopView);
 
-        testBtn = findViewById(R.id.testBtn);
+        backBtn = findViewById(R.id.backBtn);
 
         progressBar1 = findViewById(R.id.progressBar1);
         progressBar2 = findViewById(R.id.progressBar2);
@@ -96,11 +101,11 @@ public class ShopActivity extends AppCompatActivity {
             item5.setBackgroundColor(Color.parseColor("#ff1111"));
         }
 
-        testBtn.setOnClickListener(new View.OnClickListener() {
+        backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Hi");
-                sendOnChannel1("Purchased X2 Multiplier!");
+                Intent intent = new Intent(ShopActivity.this, TapActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -114,9 +119,11 @@ public class ShopActivity extends AppCompatActivity {
                 if(items[0] == 0) {
                     if (currCount > price) {
                         dbManager.buyItem(session, newMultiplier, price, 1);
-
-                        Intent intent = new Intent(ShopActivity.this, TapActivity.class);
-                        startActivity(intent);
+                        final int[] items = dbManager.getItems(session);
+                        if(items[0] == 1) {
+                            item1.setBackgroundColor(Color.parseColor("#ff1111"));
+                            item1.setEnabled(false);
+                        }
                     } else {
                         Toast.makeText(getApplicationContext(), "Can't Afford", Toast.LENGTH_LONG).show();
                     }
@@ -134,9 +141,11 @@ public class ShopActivity extends AppCompatActivity {
                 if(items[1] == 0) {
                     if(currCount > price) {
                         dbManager.buyItem(session, newMultiplier, price, 2);
-
-                        Intent intent = new Intent(ShopActivity.this, TapActivity.class);
-                        startActivity(intent);
+                        final int[] items = dbManager.getItems(session);
+                        if(items[1] == 1) {
+                            item2.setBackgroundColor(Color.parseColor("#ff1111"));
+                            item2.setEnabled(false);
+                        }
                     }
                     else {
                         Toast.makeText(getApplicationContext(),"Can't Afford",Toast.LENGTH_LONG).show();
@@ -155,9 +164,11 @@ public class ShopActivity extends AppCompatActivity {
                 if(items[2] == 0) {
                     if(currCount > price) {
                         dbManager.buyItem(session, newMultiplier, price, 3);
-
-                        Intent intent = new Intent(ShopActivity.this, TapActivity.class);
-                        startActivity(intent);
+                        final int[] items = dbManager.getItems(session);
+                        if(items[2] == 1) {
+                            item3.setBackgroundColor(Color.parseColor("#ff1111"));
+                            item3.setEnabled(false);
+                        }
                     }
                     else {
                         Toast.makeText(getApplicationContext(),"Can't Afford",Toast.LENGTH_LONG).show();
@@ -176,9 +187,11 @@ public class ShopActivity extends AppCompatActivity {
                 if(items[3] == 0) {
                     if(currCount > price) {
                         dbManager.buyItem(session, newMultiplier, price, 4);
-
-                        Intent intent = new Intent(ShopActivity.this, TapActivity.class);
-                        startActivity(intent);
+                        final int[] items = dbManager.getItems(session);
+                        if(items[3] == 1) {
+                            item4.setBackgroundColor(Color.parseColor("#ff1111"));
+                            item4.setEnabled(false);
+                        }
                     }
                     else {
                         Toast.makeText(getApplicationContext(),"Can't Afford",Toast.LENGTH_LONG).show();
@@ -197,9 +210,11 @@ public class ShopActivity extends AppCompatActivity {
                 if(items[4] == 0) {
                     if(currCount > price) {
                         dbManager.buyItem(session, newMultiplier, price, 5);
-
-                        Intent intent = new Intent(ShopActivity.this, TapActivity.class);
-                        startActivity(intent);
+                        final int[] items = dbManager.getItems(session);
+                        if(items[4] == 1) {
+                            item5.setBackgroundColor(Color.parseColor("#ff1111"));
+                            item5.setEnabled(false);
+                        }
                     }
                     else {
                         Toast.makeText(getApplicationContext(),"Can't Afford",Toast.LENGTH_LONG).show();
@@ -209,6 +224,11 @@ public class ShopActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, TapActivity.class));
     }
 
     public void sendOnChannel1(String message) {

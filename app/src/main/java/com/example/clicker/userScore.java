@@ -1,34 +1,33 @@
 package com.example.clicker;
 
 public class userScore {
-    private String mPosition;
+    private int mPosition;
+    private String mUsername;
     private int mImageResource;
-    private String mText1;
-    private String mText2;
+    private int mScore;
 
-    public userScore(String position, int imageResource, String text1, String text2){
 
+    public userScore(int position, String username, int score, int imageResource){
         mPosition = position;
         mImageResource = imageResource;
-        mText1 = text1;
-        mText2 = text2;
+        mScore = score;
+        mUsername = username;
     }
 
-    public String getPosition(){
-
-        return mPosition;
+    public int getPosition(){
+        return this.mPosition;
     }
 
     public int getImageResource(){
 
-        return mImageResource;
+        return this.mImageResource;
     }
 
-    public String getText1(){
-        return mText1;
+    public String getUsername(){
+        return this.mUsername;
     }
 
-    public String getText2(){
-        return mText2;
+    public int getScore(){
+        return this.mScore;
     }
 }

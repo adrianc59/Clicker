@@ -14,7 +14,7 @@
         >
 
         <TextView
-            android:id="@+id/textViewPos"
+            android:id="@+id/positionView"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
@@ -31,7 +31,7 @@
             android:padding="2dp" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/scoreView"
             android:layout_width="91dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -44,10 +44,10 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/usernameView"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView"
+            android:layout_below="@+id/scoreView"
             android:layout_marginStart="14dp"
             android:layout_marginTop="-23dp"
             android:layout_toEndOf="@+id/imageView"

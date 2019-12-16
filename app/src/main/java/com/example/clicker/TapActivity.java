@@ -53,7 +53,7 @@ public class TapActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TapActivity.this, MainActivity.class);
-                intent.putExtra("currCount", session.getCurrCount());
+                intent.putExtra("totalCount", dbManager.getTotalCount(session.getUsername()));
                 startActivity(intent);
             }
         });
