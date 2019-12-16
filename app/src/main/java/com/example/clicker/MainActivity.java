@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         ArrayList<userScore> userScores = new ArrayList<>();
-        userScores.add(new userScore("1", R.drawable.ic_android, "180940", "Nick"));
         userScores.add(new userScore("2", R.drawable.ic_android, "130040", "Nick 2"));
         userScores.add(new userScore("3", R.drawable.ic_android, "110937", "Nick 3"));
         userScores.add(new userScore("4", R.drawable.ic_android, "0", "Line 2"));
@@ -86,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
                             for(int i = 0; i < jsonArray.length(); i++){
                                 JSONObject user = jsonArray.getJSONObject(i);
 
+
+
+                                //userScores.add(new userScore("1", R.drawable.ic_android, "180940", "Nick"));
                                 String username = user.getString("username");
                                 int score = user.getInt("score");
                                 String avatar = user.getString("avatar");

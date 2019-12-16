@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".test12345">
+
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/floatingActionMenu"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        app:menu_showShadow="true"
+        app:menu_fab_label=""
+        app:menu_openDirection="up"
+        app:menu_backgroundColor="@android:color/transparent">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/floatingActionItem1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_label="Leaderboard"
+            app:fab_size="mini"
+            android:src="@drawable/ic_format_list_numbered_black_24dp"
+            />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/floatingActionItem2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_label="Shop"
+            app:fab_size="mini"
+            android:src="@drawable/ic_shopping_basket_black_24dp"
+            />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/floatingActionItem3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_label="Game"
+            app:fab_size="mini"
+            android:src="@drawable/ic_videogame_asset_black_24dp"
+            />
+
+
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+</RelativeLayout>
