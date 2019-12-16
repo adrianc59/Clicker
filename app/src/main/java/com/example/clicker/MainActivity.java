@@ -32,13 +32,16 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private RequestQueue mQueue;
     private Button leaderBackBtn;
+    com.github.clans.fab.FloatingActionButton shopBtn;
+    com.github.clans.fab.FloatingActionButton leaderBtn;
+    com.github.clans.fab.FloatingActionButton gameBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextViewResult = findViewById(R.id.text_view_result);
+
 
         mQueue = Volley.newRequestQueue(this);
 
@@ -75,16 +78,26 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+        shopBtn = findViewById(R.id.floatingActionItem2);
+        gameBtn = findViewById(R.id.floatingActionItem3);
 
-        leaderBackBtn = findViewById(R.id.leaderBackBtn);
+        shopBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ShopActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        leaderBackBtn.setOnClickListener(new View.OnClickListener() {
+        gameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TapActivity.class);
                 startActivity(intent);
             }
         });
+
+
     }
 
     private void jsonParse() {

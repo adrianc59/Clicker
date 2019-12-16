@@ -15,10 +15,12 @@ public class TapActivity extends AppCompatActivity {
 
     ImageView tapper;
     TextView somethingCountView;
-    Button shopBtn;
-    Button leaderBtn;
+
     Button logoutBtn;
     TextView multiplierView;
+
+    com.github.clans.fab.FloatingActionButton shopBtn;
+    com.github.clans.fab.FloatingActionButton leaderBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +29,8 @@ public class TapActivity extends AppCompatActivity {
 
         somethingCountView = findViewById(R.id.tapperView);
         tapper = findViewById(R.id.tapper);
-        shopBtn = findViewById(R.id.shopBtn);
-        leaderBtn = findViewById(R.id.leaderBtn);
+        shopBtn = findViewById(R.id.floatingActionItem2);
+        leaderBtn = findViewById(R.id.floatingActionItem1);
         logoutBtn = findViewById(R.id.logoutBtn);
         multiplierView = findViewById(R.id.multiplierView);
 

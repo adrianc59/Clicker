@@ -45,6 +45,10 @@ public class ShopActivity extends AppCompatActivity {
     ProgressBar progressBar4;
     ProgressBar progressBar5;
 
+    com.github.clans.fab.FloatingActionButton shopBtn;
+    com.github.clans.fab.FloatingActionButton leaderBtn;
+    com.github.clans.fab.FloatingActionButton gameBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +71,7 @@ public class ShopActivity extends AppCompatActivity {
         item5 = findViewById(R.id.item5);
         currCountView = findViewById(R.id.currCountShopView);
 
-        backBtn = findViewById(R.id.backBtn);
+
 
         progressBar1 = findViewById(R.id.progressBar1);
         progressBar2 = findViewById(R.id.progressBar2);
@@ -80,6 +84,9 @@ public class ShopActivity extends AppCompatActivity {
         progressBar3.setProgress(currCount);
         progressBar4.setProgress(currCount);
         progressBar5.setProgress(currCount);
+
+        leaderBtn = findViewById(R.id.floatingActionItem1);
+        gameBtn = findViewById(R.id.floatingActionItem3);
 
         currCountView.setText("Balance = " + String.valueOf(currCount));
 
@@ -101,10 +108,18 @@ public class ShopActivity extends AppCompatActivity {
             item5.setBackgroundColor(Color.parseColor("#ff1111"));
         }
 
-        backBtn.setOnClickListener(new View.OnClickListener() {
+        gameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ShopActivity.this, TapActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        leaderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ShopActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
