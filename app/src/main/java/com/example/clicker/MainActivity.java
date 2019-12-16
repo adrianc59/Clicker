@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private RequestQueue mQueue;
     private Button leaderBackBtn;
+    com.github.clans.fab.FloatingActionButton shopBtn;
+    com.github.clans.fab.FloatingActionButton leaderBtn;
+    com.github.clans.fab.FloatingActionButton gameBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
                 userScore a = new userScore(username,score,avatar);
                 userScores.add(a);
+
+                //mTextViewResult.append(username + ", " + String.valueOf(score) + ", " + avatar + "\n\n");*/
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -81,10 +86,21 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+        shopBtn = findViewById(R.id.floatingActionItem2);
+        gameBtn = findViewById(R.id.floatingActionItem3);
 
-        leaderBackBtn = findViewById(R.id.leaderBackBtn);
+        final Session session = new Session(getApplicationContext());
 
-        leaderBackBtn.setOnClickListener(new View.OnClickListener() {
+        shopBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ShopActivity.class);
+                intent.putExtra("currCount", session.getCurrCount());
+                startActivity(intent);
+            }
+        });
+
+        gameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TapActivity.class);
