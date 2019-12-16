@@ -1,5 +1,7 @@
 package com.example.clicker;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class leaderboardAdapter extends RecyclerView.Adapter<leaderboardAdapter.leaderboardViewHolder> {
@@ -49,11 +54,20 @@ public class leaderboardAdapter extends RecyclerView.Adapter<leaderboardAdapter.
     @Override
     public void onBindViewHolder(@NonNull leaderboardViewHolder holder, int position) {
         userScore currentScore = mUserscoresList.get(position);
-
-        holder.mPositionView.setText(String.valueOf(currentScore.getPosition()));
+        holder.mPositionView.setText(String.valueOf(position + 1));
         holder.mUsernameView.setText((currentScore.getUsername()));
         holder.mScoreView.setText(String.valueOf(currentScore.getScore()));
-        holder.mImageView.setImageResource(currentScore.getImageResource());
+        holder.mScoreView.setText(currentScore.getImageResource());
+
+       /* URL url = null;
+        try {
+            url = new URL(currentScore.getImageResource());
+            Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+            holder.mImageView.setImageBitmap(bmp);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error = " + e);
+        }*/
     }
 
     @Override

@@ -24,6 +24,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
     private TextView mTextViewResult;
@@ -38,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = getIntent();
+        final String loggedUsername = intent.getStringExtra("username");
+        final int totalCount = intent.getIntExtra("totalCount", 0);
+
+        userScore logged = new userScore(loggedUsername,totalCount,"https://cdn4.iconfinder.com/data/icons/sports-fitness-line-color-vol-5/52/weight__dumbbell__fitness__gym__lifter__avatar__body-512.png");
+
         mTextViewResult = findViewById(R.id.text_view_result);
 
         mQueue = Volley.newRequestQueue(this);
@@ -45,7 +52,10 @@ public class MainActivity extends AppCompatActivity {
         //jsonParse();
 
         JSONArray jsonArray = jsonParse2();
+
         ArrayList<userScore> userScores = new ArrayList<>(10);
+
+        userScores.add(logged);
 
         try {
             for(int i = 0; i < jsonArray.length(); i++){
@@ -55,18 +65,14 @@ public class MainActivity extends AppCompatActivity {
                 int score = user.getInt("score");
                 String avatar = user.getString("avatar");
 
-                userScore a = new userScore(i,username,score,R.drawable.ic_android);
-                System.out.println(a.getPosition());
-                System.out.println(a.getScore());
-                System.out.println(a.getUsername());
-                System.out.println(a.getImageResource());
+                userScore a = new userScore(username,score,avatar);
                 userScores.add(a);
-
-                //mTextViewResult.append(username + ", " + String.valueOf(score) + ", " + avatar + "\n\n");*/
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        Collections.sort(userScores, new scoreComparator());
 
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
@@ -123,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
     private JSONArray jsonParse2() {
 
         try {
-            String myUrl = "https://api.myjson.com/bins/ydd0o";
+            String myUrl = "https://api.myjson.com/bins/nmgs0";
             //String to place our result in
             String result;
             //Instantiate new instance of our class
@@ -133,13 +139,13 @@ public class MainActivity extends AppCompatActivity {
 
             int start = result.indexOf("[");
 
-            String finalString = result.substring(start, result.length()-1);
+            String finalString = result.substring(start, result.length());
 
             JSONArray jsonArr = new JSONArray(finalString);
 
             return jsonArr;
         }catch (Exception e){
-
+            System.out.println("Error = " + e);
         }
 
         return null;

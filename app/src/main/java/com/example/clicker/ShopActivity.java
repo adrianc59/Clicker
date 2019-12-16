@@ -114,11 +114,10 @@ public class ShopActivity extends AppCompatActivity {
             int newMultiplier = 2;
             @Override
             public void onClick(View v) {
-                sendOnChannel1("Purchased X2 Multiplier!");
-
                 if(items[0] == 0) {
                     if (currCount > price) {
                         dbManager.buyItem(session, newMultiplier, price, 1);
+                        sendOnChannel1("Purchased X2 Multiplier!");
                         final int[] items = dbManager.getItems(session);
                         if(items[0] == 1) {
                             item1.setBackgroundColor(Color.parseColor("#ff1111"));
@@ -141,6 +140,7 @@ public class ShopActivity extends AppCompatActivity {
                 if(items[1] == 0) {
                     if(currCount > price) {
                         dbManager.buyItem(session, newMultiplier, price, 2);
+                        sendOnChannel1("Purchased X10 Multiplier!");
                         final int[] items = dbManager.getItems(session);
                         if(items[1] == 1) {
                             item2.setBackgroundColor(Color.parseColor("#ff1111"));
@@ -164,6 +164,7 @@ public class ShopActivity extends AppCompatActivity {
                 if(items[2] == 0) {
                     if(currCount > price) {
                         dbManager.buyItem(session, newMultiplier, price, 3);
+                        sendOnChannel1("Purchased X100 Multiplier!");
                         final int[] items = dbManager.getItems(session);
                         if(items[2] == 1) {
                             item3.setBackgroundColor(Color.parseColor("#ff1111"));
@@ -187,6 +188,7 @@ public class ShopActivity extends AppCompatActivity {
                 if(items[3] == 0) {
                     if(currCount > price) {
                         dbManager.buyItem(session, newMultiplier, price, 4);
+                        sendOnChannel1("Purchased X500 Multiplier!");
                         final int[] items = dbManager.getItems(session);
                         if(items[3] == 1) {
                             item4.setBackgroundColor(Color.parseColor("#ff1111"));
@@ -210,6 +212,7 @@ public class ShopActivity extends AppCompatActivity {
                 if(items[4] == 0) {
                     if(currCount > price) {
                         dbManager.buyItem(session, newMultiplier, price, 5);
+                        sendOnChannel1("Purchased X1000 Multiplier!");
                         final int[] items = dbManager.getItems(session);
                         if(items[4] == 1) {
                             item5.setBackgroundColor(Color.parseColor("#ff1111"));
