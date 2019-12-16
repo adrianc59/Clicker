@@ -48,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
         userScore logged = new userScore(loggedUsername,totalCount,"https://cdn4.iconfinder.com/data/icons/sports-fitness-line-color-vol-5/52/weight__dumbbell__fitness__gym__lifter__avatar__body-512.png");
 
-        mTextViewResult = findViewById(R.id.text_view_result);
-
         mQueue = Volley.newRequestQueue(this);
 
         //jsonParse();
