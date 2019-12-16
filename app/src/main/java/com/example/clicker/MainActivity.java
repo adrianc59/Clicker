@@ -26,14 +26,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
     private TextView mTextViewResult;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private RequestQueue mQueue;
     private Button leaderBackBtn;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,20 +43,30 @@ public class MainActivity extends AppCompatActivity {
         mQueue = Volley.newRequestQueue(this);
 
         //jsonParse();
-        jsonParse2();
 
-        ArrayList<userScore> userScores = new ArrayList<>();
-        userScores.add(new userScore("1", R.drawable.ic_android, "180940", "Nick"));
-        userScores.add(new userScore("2", R.drawable.ic_android, "130040", "Nick 2"));
-        userScores.add(new userScore("3", R.drawable.ic_android, "110937", "Nick 3"));
-        userScores.add(new userScore("4", R.drawable.ic_android, "0", "Line 2"));
-        userScores.add(new userScore("5", R.drawable.ic_android, "0", "Line 2"));
-        userScores.add(new userScore("6", R.drawable.ic_android, "0", "Line 2"));
-        userScores.add(new userScore("7", R.drawable.ic_android, "0", "Line 2"));
-        userScores.add(new userScore("8", R.drawable.ic_android, "0", "Line 2"));
-        userScores.add(new userScore("9", R.drawable.ic_android, "0", "Line 2"));
-        userScores.add(new userScore("10", R.drawable.ic_android, "0", "Line 2"));
-        userScores.add(new userScore("11", R.drawable.ic_android, "0", "Line 2"));
+        JSONArray jsonArray = jsonParse2();
+        ArrayList<userScore> userScores = new ArrayList<>(10);
+
+        try {
+            for(int i = 0; i < jsonArray.length(); i++){
+                JSONObject user = jsonArray.getJSONObject(i);
+
+                String username = user.getString("username");
+                int score = user.getInt("score");
+                String avatar = user.getString("avatar");
+
+                userScore a = new userScore(i,username,score,R.drawable.ic_android);
+                System.out.println(a.getPosition());
+                System.out.println(a.getScore());
+                System.out.println(a.getUsername());
+                System.out.println(a.getImageResource());
+                userScores.add(a);
+
+                //mTextViewResult.append(username + ", " + String.valueOf(score) + ", " + avatar + "\n\n");*/
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
@@ -112,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         mQueue.add(request);
     }
 
-    private void jsonParse2() {
+    private JSONArray jsonParse2() {
 
         try {
             String myUrl = "https://api.myjson.com/bins/ydd0o";
@@ -127,34 +135,14 @@ public class MainActivity extends AppCompatActivity {
 
             String finalString = result.substring(start, result.length()-1);
 
-            try {
-                JSONArray jsonArr = new JSONArray(finalString);
+            JSONArray jsonArr = new JSONArray(finalString);
 
-                for (int i = 0; i < jsonArr.length(); i++)
-                {
-                    JSONObject jsonObj = jsonArr.getJSONObject(i);
-
-
-                    String username = jsonObj.getString("username");
-                    System.out.println(username);
-                    int score = jsonObj.getInt("score");
-                    String avatar = jsonObj.getString("avatar");
-
-                    mTextViewResult.append(username + ", " + String.valueOf(score) + ", " + avatar + "\n\n");
-
-                    //System.out.println(jsonObj);
-                }
-
-
-
-            } catch (Throwable t) {
-                Log.e("My App", "Could not parse malformed JSON: \"" + result + "\"");
-            }
+            return jsonArr;
         }catch (Exception e){
 
         }
 
-
+        return null;
         //mQueue.add(request);
     }
 
