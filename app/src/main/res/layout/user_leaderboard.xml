@@ -60,7 +60,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:width="20dp"
-            android:text="Button" />
+            android:text="Hide" />
 
 
     </RelativeLayout>

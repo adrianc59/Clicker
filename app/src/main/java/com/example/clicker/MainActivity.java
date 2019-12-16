@@ -49,11 +49,7 @@ public class MainActivity extends AppCompatActivity {
         final String loggedUsername = intent.getStringExtra("username");
         final int totalCount = intent.getIntExtra("totalCount", 0);
 
-
-        String url = "sd";
-        Picasso.with(this).load(url);
-
-
+        Picasso.with(this).load("sd");
 
         userScore logged = new userScore(loggedUsername,totalCount,"https://cdn4.iconfinder.com/data/icons/sports-fitness-line-color-vol-5/52/weight__dumbbell__fitness__gym__lifter__avatar__body-512.png");
 
@@ -89,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new leaderboardAdapter(userScores);
+        mAdapter = new leaderboardAdapter(userScores, loggedUsername);
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
