@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,10 +25,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextViewResult;
@@ -34,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private RequestQueue mQueue;
+    private Button leaderBackBtn;
 
 
     @Override
@@ -45,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
         mQueue = Volley.newRequestQueue(this);
 
-        jsonParse();
-
+        //jsonParse();
+        jsonParse2();
 
         ArrayList<userScore> userScores = new ArrayList<>();
         userScores.add(new userScore("1", R.drawable.ic_android, "180940", "Nick"));
@@ -69,7 +68,15 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
+        leaderBackBtn = findViewById(R.id.leaderBackBtn);
 
+        leaderBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TapActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void jsonParse() {
@@ -105,6 +112,50 @@ public class MainActivity extends AppCompatActivity {
         mQueue.add(request);
     }
 
+    private void jsonParse2() {
+
+        try {
+            String myUrl = "https://api.myjson.com/bins/ydd0o";
+            //String to place our result in
+            String result;
+            //Instantiate new instance of our class
+            HttpGetRequest getRequest = new HttpGetRequest();
+            //Perform the doInBackground method, passing in our url
+            result = getRequest.execute(myUrl).get();
+
+            int start = result.indexOf("[");
+
+            String finalString = result.substring(start, result.length()-1);
+
+            try {
+                JSONArray jsonArr = new JSONArray(finalString);
+
+                for (int i = 0; i < jsonArr.length(); i++)
+                {
+                    JSONObject jsonObj = jsonArr.getJSONObject(i);
+
+
+                    String username = jsonObj.getString("username");
+                    System.out.println(username);
+                    int score = jsonObj.getInt("score");
+                    String avatar = jsonObj.getString("avatar");
+
+                    mTextViewResult.append(username + ", " + String.valueOf(score) + ", " + avatar + "\n\n");
+
+                    //System.out.println(jsonObj);
+                }
+
+
+
+            } catch (Throwable t) {
+                Log.e("My App", "Could not parse malformed JSON: \"" + result + "\"");
+            }
+        }catch (Exception e){
+
+        }
+
+
+        //mQueue.add(request);
+    }
+
 }
-
-
