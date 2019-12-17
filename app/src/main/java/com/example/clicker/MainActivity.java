@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         final String loggedUsername = intent.getStringExtra("username");
         final int totalCount = intent.getIntExtra("totalCount", 0);
 
-
+        Picasso.with(this).load("Picasso");
 
         userScore logged = new userScore(loggedUsername,totalCount,"https://cdn4.iconfinder.com/data/icons/sports-fitness-line-color-vol-5/52/weight__dumbbell__fitness__gym__lifter__avatar__body-512.png");
 
