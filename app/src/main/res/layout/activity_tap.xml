@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TapActivity">
+    tools:context=".TapActivity"
+    android:background="@drawable/gradient_app">
 
 
     <ImageView
@@ -25,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0 Reps!"
-        android:textColor="#000000"
+        android:textColor="#494949"
         android:textSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,12 +42,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Multiplier = X1"
+        android:textColor="#494949"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tapper"
-        android:textColor="#000000"
-        android:textSize="18dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/tapper" />
 
 
     <com.github.clans.fab.FloatingActionMenu
@@ -63,44 +64,42 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:menu_backgroundColor="@android:color/transparent"
-        app:menu_fab_label=""
-        app:menu_openDirection="up"
-        app:menu_showShadow="true"
         app:menu_colorNormal="@color/colorAccent"
         app:menu_colorPressed="@color/colorAccent"
-        app:menu_labels_colorNormal="@color/colorAccent">
+        app:menu_fab_label=""
+        app:menu_labels_colorNormal="@color/colorAccent"
+        app:menu_openDirection="up"
+        app:menu_showShadow="true">
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/floatingActionItem1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_format_list_numbered_black_24dp"
-            app:fab_label="Leaderboard"
-            app:fab_size="mini"
             app:fab_colorNormal="@color/colorAccent"
             app:fab_colorPressed="@color/colorAccent"
-            />
+            app:fab_label="Leaderboard"
+            app:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/floatingActionItem2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_shopping_basket_black_24dp"
+            app:fab_colorNormal="@color/colorAccent"
             app:fab_label="Shop"
             app:fab_size="mini"
-            app:menu_colorPressed="@color/colorAccent"
-            app:fab_colorNormal="@color/colorAccent"/>
+            app:menu_colorPressed="@color/colorAccent" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/floatingActionItem4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_logout"
-            app:fab_label="Logout"
-            app:fab_size="mini"
             app:fab_colorNormal="@color/colorAccent"
             app:fab_colorPressed="@color/colorAccent"
-            />
+            app:fab_label="Logout"
+            app:fab_size="mini" />
 
 
     </com.github.clans.fab.FloatingActionMenu>

@@ -4,13 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MainActivity">
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        >
+
+        <TextView
+            android:id="@+id/positionView"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:padding="4dp"
+            android:text="Rank"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+
+
+
+        <TextView
+            android:id="@+id/scoreView"
+            android:layout_width="126dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="138dp"
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@+id/positionView"
+            android:text="High Score"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/usernameView"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/scoreView"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="-21dp"
+            android:layout_toEndOf="@+id/positionView"
+            android:text="Username"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+
+
+
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="570dp"
         android:layout_alignParentStart="true"
 
         android:layout_centerVertical="true"
@@ -18,8 +71,8 @@
         android:padding="4dp"
         android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="0dp"></androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@id/recyclerView"
+        tools:ignore="MissingConstraints"></androidx.recyclerview.widget.RecyclerView>
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/floatingActionMenu"
@@ -35,13 +88,12 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:menu_backgroundColor="@android:color/transparent"
-        app:menu_fab_label=""
-        app:menu_openDirection="up"
-        app:menu_showShadow="true"
         app:menu_colorNormal="@color/colorAccent"
         app:menu_colorPressed="@color/colorAccent"
-        app:menu_labels_colorNormal="@color/colorAccent">
-
+        app:menu_fab_label=""
+        app:menu_labels_colorNormal="@color/colorAccent"
+        app:menu_openDirection="up"
+        app:menu_showShadow="true">
 
 
         <com.github.clans.fab.FloatingActionButton
@@ -49,33 +101,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_shopping_basket_black_24dp"
-            app:fab_label="Shop"
-            app:fab_size="mini"
             app:fab_colorNormal="@color/colorAccent"
             app:fab_colorPressed="@color/colorAccent"
-            />
+            app:fab_label="Shop"
+            app:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/floatingActionItem3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_videogame_asset_black_24dp"
-            app:fab_label="Game"
-            app:fab_size="mini"
             app:fab_colorNormal="@color/colorAccent"
             app:fab_colorPressed="@color/colorAccent"
-            />
+            app:fab_label="Game"
+            app:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/floatingActionItem4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_logout"
-            app:fab_label="Logout"
-            app:fab_size="mini"
             app:fab_colorNormal="@color/colorAccent"
             app:fab_colorPressed="@color/colorAccent"
-            />
+            app:fab_label="Logout"
+            app:fab_size="mini" />
 
 
     </com.github.clans.fab.FloatingActionMenu>
