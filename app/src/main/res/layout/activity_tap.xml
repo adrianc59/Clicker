@@ -6,38 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".TapActivity">
 
+
+    <ImageView
+        android:id="@+id/tapper"
+        android:layout_width="365dp"
+        android:layout_height="277dp"
+        android:src="@drawable/barbell"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.154" />
+
     <TextView
         android:id="@+id/tapperView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0 Reps!"
+        android:textColor="#000000"
+        android:textSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <ImageView
-        android:id="@+id/tapper"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/weight"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.616" />
-
-
-    <Button
-        android:id="@+id/logoutBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        app:layout_constraintBottom_toTopOf="@+id/tapperView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
 
     <TextView
         android:id="@+id/multiplierView"
@@ -45,9 +42,11 @@
         android:layout_height="wrap_content"
         android:text="Multiplier = X1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tapper" />
-
+        app:layout_constraintTop_toBottomOf="@+id/tapper"
+        android:textColor="#000000"
+        android:textSize="18dp"/>
 
 
     <com.github.clans.fab.FloatingActionMenu
@@ -66,7 +65,10 @@
         app:menu_backgroundColor="@android:color/transparent"
         app:menu_fab_label=""
         app:menu_openDirection="up"
-        app:menu_showShadow="true">
+        app:menu_showShadow="true"
+        app:menu_colorNormal="@color/colorAccent"
+        app:menu_colorPressed="@color/colorAccent"
+        app:menu_labels_colorNormal="@color/colorAccent">
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/floatingActionItem1"
@@ -74,7 +76,10 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_format_list_numbered_black_24dp"
             app:fab_label="Leaderboard"
-            app:fab_size="mini" />
+            app:fab_size="mini"
+            app:fab_colorNormal="@color/colorAccent"
+            app:fab_colorPressed="@color/colorAccent"
+            />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/floatingActionItem2"
@@ -82,7 +87,20 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_shopping_basket_black_24dp"
             app:fab_label="Shop"
-            app:fab_size="mini" />
+            app:fab_size="mini"
+            app:menu_colorPressed="@color/colorAccent"
+            app:fab_colorNormal="@color/colorAccent"/>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/floatingActionItem4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_logout"
+            app:fab_label="Logout"
+            app:fab_size="mini"
+            app:fab_colorNormal="@color/colorAccent"
+            app:fab_colorPressed="@color/colorAccent"
+            />
 
 
     </com.github.clans.fab.FloatingActionMenu>

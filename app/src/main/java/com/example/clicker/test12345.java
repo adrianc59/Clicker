@@ -24,13 +24,12 @@ public class test12345 extends AppCompatActivity {
 
         Picasso.with(this).load(url).into(imageView);
 
-
         shopBtn = findViewById(R.id.floatingActionItem1);
 
         shopBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(test12345.this, ShopActivity.class);
+                Intent intent = new Intent(test12345.this, MainActivity.class);
                 startActivity(intent);
             }
         });

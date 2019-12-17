@@ -97,10 +97,8 @@ public class DatabaseManager {
 
     public void updateCount(Session session, int totalCount) {
         int multiplier = session.getMultiplier();
-        System.out.println(multiplier);
 
         session.setCurrCount(session.getCurrCount() + (1 * multiplier));
-        System.out.println(session.getCurrCount());
         ContentValues contentValues = new ContentValues();
         contentValues.put(DatabaseHelper.CURR_COUNT, session.getCurrCount());
         contentValues.put(DatabaseHelper.TOTAL_COUNT, totalCount + (1 * multiplier));
@@ -164,5 +162,21 @@ public class DatabaseManager {
         cursor.moveToFirst();
 
         return cursor.getInt(0);
+    }
+
+    public void reset(Session session) {
+        session.setCurrCount(0);
+        session.setMultiplier(1);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DatabaseHelper.CURR_COUNT, 0);
+        contentValues.put(DatabaseHelper.TOTAL_COUNT, 0);
+        contentValues.put(DatabaseHelper.MULTIPLIER, 0);
+        contentValues.put(DatabaseHelper.ITEM_1, 0);
+        contentValues.put(DatabaseHelper.ITEM_2, 0);
+        contentValues.put(DatabaseHelper.ITEM_3, 0);
+        contentValues.put(DatabaseHelper.ITEM_4, 0);
+        contentValues.put(DatabaseHelper.ITEM_5, 0);
+
+        database.update(DatabaseHelper.TABLE_USER, contentValues, DatabaseHelper.USERNAME + " = ?", new String[]{session.getUsername()});
     }
 }

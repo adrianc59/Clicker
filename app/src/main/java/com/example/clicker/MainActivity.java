@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private Button leaderBackBtn;
 
     com.github.clans.fab.FloatingActionButton shopBtn;
-    com.github.clans.fab.FloatingActionButton leaderBtn;
+    com.github.clans.fab.FloatingActionButton logout;
     com.github.clans.fab.FloatingActionButton gameBtn;
 
     @Override
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         final int totalCount = intent.getIntExtra("totalCount", 0);
 
         Picasso.with(this).load("Picasso");
+
 
         userScore logged = new userScore(loggedUsername,totalCount,"https://cdn4.iconfinder.com/data/icons/sports-fitness-line-color-vol-5/52/weight__dumbbell__fitness__gym__lifter__avatar__body-512.png");
 
@@ -85,12 +86,13 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new leaderboardAdapter(userScores);
+        mAdapter = new leaderboardAdapter(userScores, loggedUsername);
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
         shopBtn = findViewById(R.id.floatingActionItem2);
         gameBtn = findViewById(R.id.floatingActionItem3);
+        logout = findViewById(R.id.floatingActionItem4);
 
         final Session session = new Session(getApplicationContext());
 
@@ -107,6 +109,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TapActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                session.setLogin("");
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -148,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
     private JSONArray jsonParse2() {
 
         try {
-            String myUrl = "https://api.myjson.com/bins/nmgs0";
+            String myUrl = "https://api.myjson.com/bins/17hj50";
             //String to place our result in
             String result;
             //Instantiate new instance of our class

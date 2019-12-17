@@ -45,9 +45,10 @@ public class ShopActivity extends AppCompatActivity {
     ProgressBar progressBar4;
     ProgressBar progressBar5;
 
-    com.github.clans.fab.FloatingActionButton shopBtn;
+
     com.github.clans.fab.FloatingActionButton leaderBtn;
     com.github.clans.fab.FloatingActionButton gameBtn;
+    com.github.clans.fab.FloatingActionButton logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,25 +88,27 @@ public class ShopActivity extends AppCompatActivity {
 
         leaderBtn = findViewById(R.id.floatingActionItem1);
         gameBtn = findViewById(R.id.floatingActionItem3);
+        logout = findViewById(R.id.floatingActionItem4);
 
         currCountView.setText("Balance = " + String.valueOf(currCount));
 
         final int[] items = dbManager.getItems(session);
 
         if(items[0] == 1) {
-            item1.setBackgroundColor(Color.parseColor("#ff1111"));
+
+            item1.setBackgroundResource(R.drawable.custom_button_shop);
         }
         if(items[1] == 1) {
-            item2.setBackgroundColor(Color.parseColor("#ff1111"));
+            item2.setBackgroundResource(R.drawable.custom_button_shop);
         }
         if(items[2] == 1) {
-            item3.setBackgroundColor(Color.parseColor("#ff1111"));
+            item3.setBackgroundResource(R.drawable.custom_button_shop);
         }
         if(items[3] == 1) {
-            item4.setBackgroundColor(Color.parseColor("#ff1111"));
+            item4.setBackgroundResource(R.drawable.custom_button_shop);
         }
         if(items[4] == 1) {
-            item5.setBackgroundColor(Color.parseColor("#ff1111"));
+            item5.setBackgroundResource(R.drawable.custom_button_shop);
         }
 
         gameBtn.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +129,15 @@ public class ShopActivity extends AppCompatActivity {
             }
         });
 
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                session.setLogin("");
+                Intent intent = new Intent(ShopActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
         item1.setOnClickListener(new View.OnClickListener() {
             int price = 100;
             int newMultiplier = 2;
@@ -137,7 +149,7 @@ public class ShopActivity extends AppCompatActivity {
                         sendOnChannel1("Purchased X2 Multiplier!");
                         final int[] items = dbManager.getItems(session);
                         if(items[0] == 1) {
-                            item1.setBackgroundColor(Color.parseColor("#ff1111"));
+                            item1.setBackgroundResource(R.drawable.custom_button_shop);
                             item1.setEnabled(false);
                         }
                     } else {
@@ -160,7 +172,7 @@ public class ShopActivity extends AppCompatActivity {
                         sendOnChannel1("Purchased X10 Multiplier!");
                         final int[] items = dbManager.getItems(session);
                         if(items[1] == 1) {
-                            item2.setBackgroundColor(Color.parseColor("#ff1111"));
+                            item2.setBackgroundResource(R.drawable.custom_button_shop);
                             item2.setEnabled(false);
                         }
                     }
@@ -184,7 +196,7 @@ public class ShopActivity extends AppCompatActivity {
                         sendOnChannel1("Purchased X100 Multiplier!");
                         final int[] items = dbManager.getItems(session);
                         if(items[2] == 1) {
-                            item3.setBackgroundColor(Color.parseColor("#ff1111"));
+                            item3.setBackgroundResource(R.drawable.custom_button_shop);
                             item3.setEnabled(false);
                         }
                     }
@@ -208,7 +220,7 @@ public class ShopActivity extends AppCompatActivity {
                         sendOnChannel1("Purchased X500 Multiplier!");
                         final int[] items = dbManager.getItems(session);
                         if(items[3] == 1) {
-                            item4.setBackgroundColor(Color.parseColor("#ff1111"));
+                            item4.setBackgroundResource(R.drawable.custom_button_shop);
                             item4.setEnabled(false);
                         }
                     }
@@ -232,7 +244,7 @@ public class ShopActivity extends AppCompatActivity {
                         sendOnChannel1("Purchased X1000 Multiplier!");
                         final int[] items = dbManager.getItems(session);
                         if(items[4] == 1) {
-                            item5.setBackgroundColor(Color.parseColor("#ff1111"));
+                            item5.setBackgroundResource(R.drawable.custom_button_shop);
                             item5.setEnabled(false);
                         }
                     }

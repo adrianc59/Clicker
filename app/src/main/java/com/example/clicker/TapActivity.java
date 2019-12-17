@@ -16,11 +16,12 @@ public class TapActivity extends AppCompatActivity {
     ImageView tapper;
     TextView somethingCountView;
 
-    Button logoutBtn;
+
     TextView multiplierView;
 
     com.github.clans.fab.FloatingActionButton shopBtn;
     com.github.clans.fab.FloatingActionButton leaderBtn;
+    com.github.clans.fab.FloatingActionButton logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class TapActivity extends AppCompatActivity {
         tapper = findViewById(R.id.tapper);
         shopBtn = findViewById(R.id.floatingActionItem2);
         leaderBtn = findViewById(R.id.floatingActionItem1);
-        logoutBtn = findViewById(R.id.logoutBtn);
+        logout = findViewById(R.id.floatingActionItem4);
         multiplierView = findViewById(R.id.multiplierView);
 
         dbManager = new DatabaseManager(this);
@@ -70,7 +71,7 @@ public class TapActivity extends AppCompatActivity {
             }
         });
 
-        logoutBtn.setOnClickListener(new View.OnClickListener() {
+        logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 session.setLogin("");
