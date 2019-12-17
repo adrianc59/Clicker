@@ -43,118 +43,29 @@ public class RegisterActivityTest {
 
     @Test
     public void registerActivityTest() {
-        ViewInteraction appCompatTextView = onView(
-                allOf(withId(R.id.regLink), withText("Register Here."),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                3),
-                        isDisplayed()));
-        appCompatTextView.perform(click());
-
         ViewInteraction appCompatEditText = onView(
-                allOf(withId(R.id.regUsername),
+                allOf(withId(R.id.loginEmail),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
                                 3),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("rr"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText("pp"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.regUsername), withText("rr"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                3),
-                        isDisplayed()));
-        appCompatEditText2.perform(pressImeActionButton());
-
-        ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.regEmail),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                4),
-                        isDisplayed()));
-        appCompatEditText3.perform(replaceText("s@w.h"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.regEmail), withText("s@w.h"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                4),
-                        isDisplayed()));
-        appCompatEditText4.perform(pressImeActionButton());
-
-        ViewInteraction appCompatEditText5 = onView(
-                allOf(withId(R.id.regConfirmPassword),
+                allOf(withId(R.id.loginPassword),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatEditText5.perform(replaceText("Allstar"), closeSoftKeyboard());
+        appCompatEditText2.perform(replaceText("Allstar50"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText6 = onView(
-                allOf(withId(R.id.regConfirmPassword), withText("Allstar"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatEditText6.perform(pressImeActionButton());
-
-        ViewInteraction appCompatEditText7 = onView(
-                allOf(withId(R.id.regConfirmPassword), withText("Allstar"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatEditText7.perform(replaceText("Allstar50"));
-
-        ViewInteraction appCompatEditText8 = onView(
-                allOf(withId(R.id.regConfirmPassword), withText("Allstar50"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatEditText8.perform(closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText9 = onView(
-                allOf(withId(R.id.regPassword),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatEditText9.perform(replaceText("password"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText10 = onView(
-                allOf(withId(R.id.regPassword), withText("password"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatEditText10.perform(pressImeActionButton());
 
         ViewInteraction appCompatButton = onView(
-                allOf(withId(R.id.regBtn), withText("Sign Up"),
+                allOf(withId(R.id.loginBtn), withText("Login"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
