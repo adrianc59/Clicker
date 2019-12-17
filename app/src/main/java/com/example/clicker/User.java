@@ -81,9 +81,9 @@ public class User {
     public void setTotalCount(int count){ this.totalCount = count; }
     public void setMultiplier(int multiplier){ this.multiplier = multiplier; }
 
-    public void setItem1() { this.item1 = 1; }
-    public void setItem2() { this.item2 = 1; }
-    public void setItem3() { this.item3 = 1; }
-    public void setItem4() { this.item4 = 1; }
-    public void setItem5() { this.item5 = 1; }
+    public void setItem1(int num) { this.item1 = num; }
+    public void setItem2(int num) { this.item2 = num; }
+    public void setItem3(int num) { this.item3 = num; }
+    public void setItem4(int num) { this.item4 = num; }
+    public void setItem5(int num) { this.item5 = num; }
 }

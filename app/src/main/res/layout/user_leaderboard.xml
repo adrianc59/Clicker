@@ -65,7 +65,8 @@
             android:layout_marginEnd="3dp"
             android:width="20dp"
             android:background="#CFCFCF"
-            android:text="Hide"
+            android:text="Reset"
+            android:visibility="invisible"
             android:textColor="#FFFFFF"/>
 
 

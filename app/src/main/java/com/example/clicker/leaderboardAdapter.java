@@ -25,8 +25,9 @@ public class leaderboardAdapter extends RecyclerView.Adapter<leaderboardAdapter.
 
     private ArrayList<userScore> mUserscoresList;
     private String sessionUsername;
-    Context context;
     private DatabaseManager dbManager;
+    private Context context;
+    private Session session;
 
 
     public static class leaderboardViewHolder extends RecyclerView.ViewHolder{
@@ -64,12 +65,16 @@ public class leaderboardAdapter extends RecyclerView.Adapter<leaderboardAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull leaderboardViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final leaderboardViewHolder holder, final int position) {
         userScore currentScore = mUserscoresList.get(position);
         holder.mPositionView.setText(String.valueOf(position + 1));
         holder.mUsernameView.setText((currentScore.getUsername()));
         holder.mScoreView.setText(String.valueOf(currentScore.getScore()));
         Picasso.with(context).load(currentScore.getImageResource()).into(holder.mImageView);
+
+        if(holder.mUsernameView.getText().equals(sessionUsername)) {
+            holder.mRemoveButton.setVisibility(View.VISIBLE);
+        }
 
        /* URL url = null;
         try {
@@ -81,28 +86,26 @@ public class leaderboardAdapter extends RecyclerView.Adapter<leaderboardAdapter.
             System.out.println("Error = " + e);
         }*/
 
-       holder.mRemoveButton.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               // Get the clicked item label
-               userScore itemLabel = mUserscoresList.get(position);
+        holder.mRemoveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String rowName = mUserscoresList.get(position).getUsername();
 
-               String rowName = mUserscoresList.get(position).getUsername();
+                context = holder.mRemoveButton.getContext();
+                session = new Session(context);
 
-               //if(rowName.equals(sessionUsername)) {
-                   /*Session session = new Session(context);
+                dbManager = new DatabaseManager(context);
+                dbManager.open();
 
-                   DatabaseManager databaseManager = new DatabaseManager(context);
-                   databaseManager.reset(session);*/
+                dbManager.reset(session);
 
-                   // Remove the item on remove/button click
-                   mUserscoresList.remove(position);
-                   notifyItemRemoved(position);
-                   notifyItemRangeChanged(position, mUserscoresList.size());
-               //}
-
-           }
-       });
+                // Remove the item on remove/button click
+                mUserscoresList.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, mUserscoresList.size());
+                System.out.println("Test1 ========================================");
+            }
+        });
     }
 
 

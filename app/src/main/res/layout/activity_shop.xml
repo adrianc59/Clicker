@@ -2,10 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ShopActivity"
-    android:background="@drawable/gradient_app">
+    android:background="@drawable/gradient_app"
+    tools:context="ShopActivity">
 
 
     <TextView
@@ -24,31 +25,24 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="500dp"
-        android:layout_marginTop="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.052">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <Button
                 android:id="@+id/item1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="8dp"
                 android:background="@drawable/custom_button_unavailable"
                 android:text="X2"
                 android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/priceView100"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,139 +50,121 @@
                 android:id="@+id/item2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="92dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/custom_button_unavailable"
                 android:text="X10"
                 android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/priceView500"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item1" />
+                app:layout_constraintTop_toBottomOf="@+id/progressBar1" />
 
             <Button
                 android:id="@+id/item3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="92dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/custom_button_unavailable"
                 android:text="X100"
                 android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/priceView1000"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item2" />
+                app:layout_constraintTop_toBottomOf="@+id/progressBar2" />
 
             <Button
                 android:id="@+id/item4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="88dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/custom_button_unavailable"
                 android:text="X500"
                 android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/priceView10000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item3" />
+                app:layout_constraintTop_toBottomOf="@+id/progressBar3" />
 
             <Button
                 android:id="@+id/item5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/custom_button_unavailable"
                 android:text="X1000"
                 android:textColor="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/priceView150000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item4" />
+                app:layout_constraintTop_toBottomOf="@+id/progressBar4" />
 
 
             <TextView
                 android:id="@+id/priceView150000"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="10dp"
                 android:text="Price = 150,000"
+                android:textColor="#494949"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item5"
-                app:layout_constraintVertical_bias="0.0"
-                android:textColor="#494949"/>
+                app:layout_constraintTop_toBottomOf="@+id/item5" />
 
             <TextView
                 android:id="@+id/priceView10000"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="10dp"
                 android:text="Price = 10,000"
-                app:layout_constraintBottom_toTopOf="@+id/item5"
+                android:textColor="#494949"
+                app:layout_constraintBottom_toTopOf="@+id/progressBar4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item4"
-                app:layout_constraintVertical_bias="0.0"
-                android:textColor="#494949"/>
+                app:layout_constraintTop_toBottomOf="@+id/item4" />
 
             <TextView
                 android:id="@+id/priceView1000"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="10dp"
                 android:text="Price = 1,000"
-                app:layout_constraintBottom_toTopOf="@+id/item4"
+                android:textColor="#494949"
+                app:layout_constraintBottom_toTopOf="@+id/progressBar3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item3"
-                app:layout_constraintVertical_bias="0.037"
-                android:textColor="#494949"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/item3" />
 
             <TextView
                 android:id="@+id/priceView500"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="10dp"
                 android:text="Price = 500"
-                app:layout_constraintBottom_toTopOf="@+id/item3"
+                android:textColor="#494949"
+                app:layout_constraintBottom_toTopOf="@+id/progressBar2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item2"
-                app:layout_constraintVertical_bias="0.0"
-                android:textColor="#494949"
-             />
+                app:layout_constraintTop_toBottomOf="@+id/item2" />
 
             <TextView
                 android:id="@+id/priceView100"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="10dp"
                 android:text="Price = 100"
-                app:layout_constraintBottom_toTopOf="@+id/item2"
+                android:textColor="#494949"
+                app:layout_constraintBottom_toTopOf="@+id/progressBar1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item1"
-                app:layout_constraintVertical_bias="0.0"
-                android:textColor="#494949"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/item1" />
 
             <ProgressBar
                 android:id="@+id/progressBar1"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:max="100"
                 android:minWidth="150dp"
                 app:layout_constraintBottom_toTopOf="@+id/item2"
@@ -201,6 +177,7 @@
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:max="500"
                 android:minWidth="150dp"
                 app:layout_constraintBottom_toTopOf="@+id/item3"
@@ -213,6 +190,7 @@
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:max="1000"
                 android:minWidth="150dp"
                 app:layout_constraintBottom_toTopOf="@+id/item4"
@@ -225,6 +203,7 @@
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:max="10000"
                 android:minWidth="150dp"
                 app:layout_constraintBottom_toTopOf="@+id/item5"
@@ -237,6 +216,7 @@
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:max="150000"
                 android:minWidth="150dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -264,8 +244,8 @@
         app:menu_backgroundColor="@android:color/transparent"
         app:menu_colorNormal="@color/colorAccent"
         app:menu_colorPressed="@color/colorAccent"
-        app:menu_labels_colorNormal="@color/colorAccent"
         app:menu_fab_label=""
+        app:menu_labels_colorNormal="@color/colorAccent"
         app:menu_openDirection="up"
         app:menu_showShadow="true">
 

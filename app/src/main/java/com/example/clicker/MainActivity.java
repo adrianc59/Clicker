@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private RequestQueue mQueue;
-    private Button leaderBackBtn;
+    private Button removeBtn;
 
     com.github.clans.fab.FloatingActionButton shopBtn;
     com.github.clans.fab.FloatingActionButton logout;
@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         shopBtn = findViewById(R.id.floatingActionItem2);
         gameBtn = findViewById(R.id.floatingActionItem3);
         logout = findViewById(R.id.floatingActionItem4);
+        removeBtn = findViewById(R.id.removeBtn);
 
         final Session session = new Session(getApplicationContext());
 
@@ -181,5 +182,4 @@ public class MainActivity extends AppCompatActivity {
         return null;
         //mQueue.add(request);
     }
-
 }

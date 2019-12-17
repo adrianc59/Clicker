@@ -95,7 +95,6 @@ public class ShopActivity extends AppCompatActivity {
         final int[] items = dbManager.getItems(session);
 
         if(items[0] == 1) {
-
             item1.setBackgroundResource(R.drawable.custom_button_shop);
         }
         if(items[1] == 1) {
@@ -146,6 +145,7 @@ public class ShopActivity extends AppCompatActivity {
                 if(items[0] == 0) {
                     if (currCount > price) {
                         dbManager.buyItem(session, newMultiplier, price, 1);
+                        currCountView.setText("Balance = " + String.valueOf(session.getCurrCount()));
                         sendOnChannel1("Purchased X2 Multiplier!");
                         final int[] items = dbManager.getItems(session);
                         if(items[0] == 1) {
@@ -169,6 +169,7 @@ public class ShopActivity extends AppCompatActivity {
                 if(items[1] == 0) {
                     if(currCount > price) {
                         dbManager.buyItem(session, newMultiplier, price, 2);
+                        currCountView.setText("Balance = " + String.valueOf(session.getCurrCount()));
                         sendOnChannel1("Purchased X10 Multiplier!");
                         final int[] items = dbManager.getItems(session);
                         if(items[1] == 1) {
@@ -193,6 +194,7 @@ public class ShopActivity extends AppCompatActivity {
                 if(items[2] == 0) {
                     if(currCount > price) {
                         dbManager.buyItem(session, newMultiplier, price, 3);
+                        currCountView.setText("Balance = " + String.valueOf(session.getCurrCount()));
                         sendOnChannel1("Purchased X100 Multiplier!");
                         final int[] items = dbManager.getItems(session);
                         if(items[2] == 1) {
@@ -217,6 +219,7 @@ public class ShopActivity extends AppCompatActivity {
                 if(items[3] == 0) {
                     if(currCount > price) {
                         dbManager.buyItem(session, newMultiplier, price, 4);
+                        currCountView.setText("Balance = " + String.valueOf(session.getCurrCount()));
                         sendOnChannel1("Purchased X500 Multiplier!");
                         final int[] items = dbManager.getItems(session);
                         if(items[3] == 1) {
@@ -241,6 +244,7 @@ public class ShopActivity extends AppCompatActivity {
                 if(items[4] == 0) {
                     if(currCount > price) {
                         dbManager.buyItem(session, newMultiplier, price, 5);
+                        currCountView.setText("Balance = " + String.valueOf(session.getCurrCount()));
                         sendOnChannel1("Purchased X1000 Multiplier!");
                         final int[] items = dbManager.getItems(session);
                         if(items[4] == 1) {
